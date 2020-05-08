@@ -139,7 +139,7 @@ namespace LBD.Source_Files
             {
                 if (Roblox.Instruction.GetOpCode(Bytecode[i]) == Roblox.Instruction.OpCode.LoadBool)
                 {
-                    //Constants.Add(new Roblox.BooleanConstant());
+                    Constants.Add(new Roblox.BooleanConstant());
                 }
             }
             return Constants;
