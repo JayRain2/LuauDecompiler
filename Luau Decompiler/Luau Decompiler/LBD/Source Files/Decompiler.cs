@@ -24,6 +24,7 @@ namespace LBD.Source_Files
 
         // Here we get each string value out of the string table
         // Then it gets added to the stack
+        // Thanks to King for helping me with this function :)
         public IList<string> ReadStringTable()       
         {
             StringBuilder b = new StringBuilder();
