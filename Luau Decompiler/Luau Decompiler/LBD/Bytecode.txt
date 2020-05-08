@@ -1,0 +1,86 @@
+﻿EXAMPLE 1
+
+
+
+Script: print(1)
+
+01 
+01
+05 => 70 72 69 6E 74 (print)
+
+stringtable = {
+"print"
+}
+
+01 02 00 00 01 06 (protodata)
+clearstack / emptystack => A3 00 00 00
+getglobal => A4 00 01 00 00 00 00 40
+loadnumber => 8C 01 01 00
+call => 9F 00 02 01
+return => 82 00 01 00
+
+02 03 01 04 00 00 00 40 00 00 06 01 00 00 00 00 01 00 00 (protodata)
+
+
+
+
+EXAMPLE 2
+
+
+
+
+02
+01 => 05 70 72 69 6E 74 (print)
+02 => 05 68 65 6C 6C 6F (hello)
+(protodata)
+clearstack/emptystack => A3 00 00 00
+getglobal => A4 01 (print) 02 00 00 00 00 40 (getglobal we will get the first item from the string table (which will be loaded onto the stack))
+loadk => 6F 02 (hello) 03 00 (loadk will get the second item (as we can see in the A register, loadk has an ABx register, the second item in the string table
+will be loaded onto the stack))
+
+return => 82 00 00 00
+
+print("hello")
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+Script: print(1)
+Bytecode: 01 01 05 70 72 69 6E 74 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 8C 01 01 00 9F 00 02 01 82 00 01 00 02 03 01 04 00 00 00 40 00 00 06 01 00 00 00 00 01 00 00
+
+Script: print(2)
+Bytecode: 01 01 05 70 72 69 6E 74 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 8C 01 02 00 9F 00 02 01 82 00 01 00 02 03 01 04 00 00 00 40 00 00 06 01 00 00 00 00 00 00 00
+
+Script: print(3)
+Bytecode: 01 01 05 70 72 69 6E 74 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 8C 01 03 00 9F 00 02 01 82 00 01 00 02 03 01 04 00 00 00 40 00 00 06 01 00 00 00 00 00 00 00
+
+Script: print(800)
+Bytecode: 01 01 05 70 72 69 6E 74 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 8C 01 20 03 9F 00 02 01 82 00 01 00 02 03 01 04 00 00 00 40 00 00 06 01 00 00 00 00 00 00 00
+
+
+
+Script: print("h")
+Bytecode: 01 02 05 70 72 69 6E 74 01 68 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 6F 01 02 00 9F 00 02 01 82 00 01 00 03 03 01 04 00 00 00 40 03 02 00 00 06 01 00 00 00 00 00 00 00
+
+Script: print("i")
+Bytecode: 01 02 05 70 72 69 6E 74 01 69 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 6F 01 02 00 9F 00 02 01 82 00 01 00 03 03 01 04 00 00 00 40 03 02 00 00 06 01 00 00 00 00 00 00 00
+
+Script: print("hi")
+Bytecode: 01 02 05 70 72 69 6E 74 02 68 69 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 6F 01 02 00 9F 00 02 01 82 00 01 00 03 03 01 04 00 00 00 40 03 02 00 00 06 01 00 00 00 00 00 00 00
+
+
+
+```lua
+Script: print(1)
+Bytecode: 01 01 05 70 72 69 6E 74 01 02 00 00 01 06 A3 00 00 00 A4 00 01 00 00 00 00 40 8C 01 01 00 9F 00 02 01 82 00 01 00 02 03 01 04 00 00 00 40 00 00 06 01 00 00 00 00 01 00 00
+```
+
+x=game.Lighting.LocalScript:Clone() x.Parent=workspace.Tard1 x.Disabled=false
+x=game.Lighting.LocalScript:Clone() x.Parent=workspace.Tard2 x.Disabled=false
+
+Script: local a = "h" (function() print(a) end)()
+01 02 05 70 72 69 6E 74 01 68 02 02 00 00 00 06 C0 00 00 00 A4 00 01 00 00 00 00 40 6F 01 02 00 9F 00 02 01 82 00 01 00 03 03 01 04 00 00 00 40 03 02 00 00 06 02 00 00 00 00 00 00 02 00 00 01 05 A3 00 00 00 6F 00 00 00 D9 01 00 00 9F 01 01 01 82 00 01 00 01 03 02 01 00 00 05 01 00 01 00 00 00 01
+
+Script: print(game.Players.LocalPlayer.Name)
+Bytecode: 01 05 05 70 72 69 6E 74 04 67 61 6D 65 07 50 6C 61 79 65 72 73 0B 4C 6F 63 61 6C 50 6C 61 79 65 72 04 4E 61 6D 65 01 05 00 00 01 0D A3 00 00 00 A4 00 01 00 00 00 00 40 A4 04 03 00 00 00 20 40 4D 03 04 50 04 00 00 00 4D 02 03 31 05 00 00 00 4D 01 02 BA 06 00 00 00 9F 00 02 01 82 00 01 00 07 03 01 04 00 00 00 40 03 02 04 00 00 20 40 03 03 03 04 03 05 00 00 0D 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00
