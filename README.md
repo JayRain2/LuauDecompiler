@@ -6,6 +6,6 @@ Some info about the current state of the Luau Decompiler.
 
 It currently supports these opcodes.
 
-GetGlobal, Loadk, Call, ClearStack, Return, GetTablek, LoadNumber, LoadBool, Closure, Init
+GetGlobal, Loadk, Call, ClearStack, Return, GetTablek, LoadNumber, and LoadBool
 
 The LuaNumber was broken on prpose so users people could figure out how to fix it!
